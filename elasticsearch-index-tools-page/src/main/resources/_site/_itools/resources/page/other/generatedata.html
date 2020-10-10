@@ -1,0 +1,197 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-tab" lay-filter="tab_filter">
+                <ul class="layui-tab-title">
+                    <li lay-id="tab_filter_1">数据模板查看</li>
+                    <li lay-id="tab_filter_2">数据模板创建</li>
+                    <li lay-id="tab_filter_3">内置数据</li>
+                    <li lay-id="tab_filter_4" class="layui-this">数据生成</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 550px;overflow: auto;">
+                    <!-- 第一个tab 模板-->
+                    <div class="layui-tab-item">
+                        <div class="layui-col-md3">
+                            <div class="layui-card">
+                                <div class="layui-card-header">数据模板</div>
+                                <div class="layui-card-body" id="template-tree">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md9">
+                            <div class="layui-card">
+                                <div class="layui-card-header">当前&nbsp;:&nbsp;&nbsp;<span
+                                        id="currentTemplate">...</span>
+                                    <button type="button" id="deleteTemplate" class="layui-btn"
+                                            style="margin-top: 2px;position: absolute;right: 20px;">删除</button>
+                                    <button type="button" id="saveTemplate" class="layui-btn"
+                                            style="margin-top: 2px;position: absolute;right: 110px;">保存</button>
+                                    <button type="button" id="editTemplate" class="layui-btn"
+                                            style="margin-top: 2px;position: absolute;right: 200px;">编辑</button>
+
+                                </div>
+                                <div class="layui-card-body">
+                                    <div class="layui-card-body" id="rspbody" style="display: none;">
+                                    </div>
+                                    <div class="layui-card-body" id="rspbodyEdit" style="display: none;">
+                                        <textarea
+                                                style="margin: 0px;width: 100%;height: 620px;border: 1px solid #f6f6f6;resize: none;background-color: #e6e6e6;color: #333;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第二个tab 创建 -->
+                    <div class="layui-tab-item">
+                        <form class="layui-form layui-col-md10 layui-col-md-offset1">
+                            <fieldset class="layui-elem-field">
+                                <legend>创建</legend>
+                                <div class="layui-field-box">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">模板id</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="templateId" placeholder="使用索引前缀作为模板id"
+                                                       lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label" style="width:85px">每天自动执行</label>
+                                            <div class="layui-input-inline">
+                                                <input type="checkbox" value="true" checked="" name="cron" lay-skin="switch"  lay-text="ON|OFF">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <blockquote class="layui-elem-quote layui-quote-nm">
+                                <p>*EL表达式:如${ip}表示从内置数据ip字段取值;</p>
+                                <p>*EL表达式:如${yyyy-MM-dd HH:mm:ss}表示时间字段(也可配置格式化:${yyyy-MM-dd});</p>
+                                <p>*自定义取值(按格式设置单值或者数组)</p>
+                            </blockquote>
+                            <fieldset class="layui-elem-field">
+                                <legend>字段取值配置</legend>
+                                <div class="layui-form-item">
+                                    <div class="layui-card">
+                                        <div class="layui-card-body">
+                                            <div class="layui-card-body" id="templateBody" style="display: block;">
+                                               <textarea name="templateBody" id="templateBodyArea"
+                                                style="margin: 0px;width: 100%;height: 500px;border: 1px solid #f6f6f6;background-color: #e6e6e6;color: #333;">
+{
+    "report_ip": "${ip}",
+    "url": "单值参考",
+    "event_time": "${yyyy-MM-dd HH:mm:ss}",
+    "username": [
+        "多值随机1",
+        "多值随机2",
+        "多值随机3"
+    ]
+
+}
+                                               </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="commitTemplate">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 第三个tab 内置数据-->
+                    <div class="layui-tab-item">
+                        <div class="layui-col-md3">
+                            <div class="layui-card">
+                                <div class="layui-card-header">内置数据</div>
+                                <div class="layui-card-body" id="template-pool-tree">
+                                    generatetest-pool
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md9">
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <button type="button" id="saveTemplatePool" class="layui-btn"
+                                            style="margin-top: 2px;position: absolute;right: 110px;">保存</button>
+                                    <button type="button" id="editTemplatePool" class="layui-btn"
+                                            style="margin-top: 2px;position: absolute;right: 200px;">编辑</button>
+                                </div>
+                                <div class="layui-card-body">
+                                    <div class="layui-card-body" id="rsPoolpbody" style="display: none;">
+                                    </div>
+                                    <div class="layui-card-body" id="rsPoolbodyEdit" style="display: none;">
+                                        <textarea id="rsPoolBodyArea"
+                                                style="margin: 0px;width: 100%;height: 620px;border: 1px solid #f6f6f6;resize: none;background-color: #e6e6e6;color: #333;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第四个tab 数据生成-->
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form layui-col-md10 layui-col-md-offset1">
+                            <fieldset class="layui-elem-field">
+                                <legend>数据生成</legend>
+                                <div class="layui-field-box">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">数据模板</label>
+                                            <div class="layui-input-inline">
+                                                <select name="template" lay-verify="required" lay-filter="template"  id="template">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">选择索引</label>
+                                            <div class="layui-input-inline">
+                                                <select name="index" lay-verify="required"  lay-filter="index"  id="index">
+                                                    <option value="">请选择目标索引</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">选择月份/天</label>
+                                            <div class="layui-input-block">
+                                                <select name="date" lay-verify="required"  lay-filter="date"  id="date">
+                                                    <option value="">请选择月或天</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">生成数据量</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="rows" value="1000"  lay-verify="required"
+                                                       lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="commitGenerate">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/generatedata.js"></script>

@@ -1,0 +1,68 @@
+<div class="layui-fluid">
+    <div class="layui-col-md3 layui-card layui-col-space15" style="height: 620px;overflow: auto;">
+        <form class="layui-form" style="padding: 10px;">
+            <div class="layui-form-item">
+                <div class="layui-input-inline" style="width: 100%">
+                    <select name="allIndices" lay-verify="required" lay-filter="allIndices" id="allIndices">
+                        <option value="">全部索引</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="layui-card">
+            <div class="layui-card-header">索引</div>
+            <div class="layui-card-body" id="index-tree">
+                ...
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-md9 layui-card layui-col-space15" style="float: right;">
+        <div class="layui-card-header">结果</div>
+        <div class="layui-card-body">
+            <div class="layui-card-header" id="rspheader">查询 0 个分片中用的 0 个, 0 命中. 耗时 0 ms</div>
+            <div class="layui-card-body" id="rspbody">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="optionList" type="text/html">
+    <option value="">全部索引</option>
+    {{# for (var i in d) { }}
+    {{# if (d[i].aliases.length == 0) { }}
+    <option value="{{ i }}">{{ i }}</option>
+    {{# } else { }}
+    {{#   for (var i2 in d[i].aliases) { }}
+    <option value="{{ d[i].aliases[i2] }}">{{ d[i].aliases[i2] }}</option>
+    {{#   } }}
+    {{# } }}
+    {{# } }}
+</script>
+<script id="dataTable" type="text/html">
+    <table class="layui-table" lay-size="sm">
+        <thead>
+            <tr>
+                <th width="30px">展开</th>
+                <th>_source</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{# layui.each(d,function(index,item){ }}
+            <tr>
+                <td name="spread" data="{{ index }}" style="cursor: pointer;">
+                    <i class="layui-icon layui-icon-fonts-code" />
+                </td>
+                <td>
+                    {{# var arr = layui.vtools.spread(item["_source"]); }}
+                    {{# layui.each(arr,function(index2,item2){ }}
+                    <strong style='padding: 4px;'>{{ item2[0] }}:</strong><span style='padding: 4px;'>{{ item2[1] }}</span>
+                    {{# }); }}
+                </td>
+            </tr>
+            <tr></tr>
+            {{# }); }}
+        </tbody>
+    </table>
+</script>
+<script src="/_itools/resources/js/data.js"></script>

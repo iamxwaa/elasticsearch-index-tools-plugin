@@ -1,0 +1,47 @@
+allprojects {
+    apply plugin: 'scala'
+    apply plugin: 'idea'
+    group 'com.github.toxrink'
+    version '1.0'
+    sourceCompatibility = 1.8
+    repositories {
+        maven {
+            url "http://nexus.maven:8081/repository/maven-public/"
+        }
+        mavenLocal()
+    }
+    dependencies {
+        compile 'org.scala-lang:scala-library:2.11.12'
+        zinc 'com.typesafe.zinc:zinc:0.3.9'
+    }
+}
+
+project(":elasticsearch-index-tools-core") {
+    dependencies {
+        compile project(":elasticsearch-index-tools-page")
+    }
+}
+
+project(":elasticsearch-index-tools-plugin-2x") {
+    dependencies {
+        compile project(":elasticsearch-index-tools-core")
+    }
+}
+
+project(":elasticsearch-index-tools-plugin-5x") {
+    dependencies {
+        compile project(":elasticsearch-index-tools-core")
+    }
+}
+
+project(":elasticsearch-index-tools-plugin-6x") {
+    dependencies {
+        compile project(":elasticsearch-index-tools-core")
+    }
+}
+
+project(":elasticsearch-index-tools-plugin-7x") {
+    dependencies {
+        compile project(":elasticsearch-index-tools-core")
+    }
+}

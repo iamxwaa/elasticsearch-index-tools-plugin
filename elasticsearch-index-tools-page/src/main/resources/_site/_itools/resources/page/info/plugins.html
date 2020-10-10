@@ -1,0 +1,50 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div id="view"></div>
+    </div>
+</div>
+<script id="info" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">组件信息</div>
+        <div class="layui-card-body layui-text">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>节点</th>
+                        <th>类型</th>
+                        <th>插件名称</th>
+                        <th>插件版本</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#  layui.each(d.nodes, function(index, item){ }}
+                    {{#  layui.each(item.plugins, function(index, item2){ }}
+                    <tr>
+                        <td>{{ item.ip}}</td>
+                        <td>插件</td>
+                        <td>{{ item2.name }}</td>
+                        <td>{{ item2.version}}</td>
+                        <td>{{ item2.description}}</td>
+                    </tr>
+                    {{#  }); }}
+                    {{#  layui.each(item.modules, function(index, item2){ }}
+                    <tr>
+                        <td>{{ item.ip}}</td>
+                        <td>模块</td>
+                        <td>{{ item2.name }}</td>
+                        <td>{{ item2.version}}</td>
+                        <td>{{ item2.description}}</td>
+                    </tr>
+                    {{#  }); }}
+                    {{#  }); }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.use(['vtpl'], function (vtpl) {
+        vtpl.ajax({ url: "_nodes/plugins", tpl: info, vid: "view" })
+    })
+</script>

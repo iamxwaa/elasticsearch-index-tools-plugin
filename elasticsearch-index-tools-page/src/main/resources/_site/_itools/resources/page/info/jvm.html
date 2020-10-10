@@ -1,0 +1,37 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div id="view"></div>
+    </div>
+</div>
+<script id="info" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">组件信息</div>
+        <div class="layui-card-body layui-text">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th width="80">节点</th>
+                        <th width="80">进程ID</th>
+                        <th width="80">JDK版本</th>
+                        <th>参数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#  layui.each(d.nodes, function(index, item){ }}
+                    <tr>
+                        <td>{{ item.ip}}</td>
+                        <td>{{ item.jvm.pid }}</td>
+                        <td>{{ item.jvm.version}}</td>
+                        <td>{{ item.jvm.input_arguments}}</td>
+                    </tr>
+                    {{#  }); }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.use(['vtpl'], function (vtpl) {
+        vtpl.ajax({ url: "_nodes/jvm", tpl: info, vid: "view" })
+    })
+</script>

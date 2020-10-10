@@ -1,0 +1,11 @@
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(ScalaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compile group: 'jxwrapper', name: 'jxwrapper', version: '0.10.1-SNAPSHOT'
+}

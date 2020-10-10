@@ -1,0 +1,57 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <form class="layui-form">
+                <fieldset class="layui-elem-field">
+                    <legend>数据备份</legend>
+                    <div class="layui-field-box">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">仓库名称</label>
+                                <div class="layui-input-block">
+                                    <select name="repository" lay-filter="repository">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">快照名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="snapshot" lay-verify="required" autocomplete="off"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">索引名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="indices" placeholder="多个用','分割" lay-verify="required"
+                                        autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">等待完毕</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="completion" lay-skin="switch" lay-text="ON|OFF">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="create">备份</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <table id="backupTable" lay-filter="backup"></table>
+            <script type="text/html" id="backupTableBar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="restore">恢复</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/snapshot/backup.js"></script>

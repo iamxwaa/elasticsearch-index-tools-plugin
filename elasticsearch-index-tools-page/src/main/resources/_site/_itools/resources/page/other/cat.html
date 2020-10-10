@@ -1,0 +1,41 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <form class="layui-form layui-form-item" style="padding: 10px;">
+                <div class="layui-col-md6 layui-col-md-offset1">
+                    <div class="layui-input-inline" style="width: 100%">
+                        <select name="action" lay-filter="catAction" id="catAction">
+                            <option value="/_cat/allocation">资源信息</option>
+                            <option value="/_cat/shards">分片信息</option>
+                            <option value="/_cat/master">主节点信息</option>
+                            <option value="/_cat/nodes">节点信息</option>
+                            <option value="/_cat/indices">索引信息</option>
+                            <option value="/_cat/segments">segments信息</option>
+                            <option value="/_cat/count">数据量</option>
+                            <option value="/_cat/recovery">recovery信息</option>
+                            <option value="/_cat/health">集群状态</option>
+                            <option value="/_cat/pending_tasks">待执行任务</option>
+                            <option value="/_cat/aliases">别名信息</option>
+                            <option value="/_cat/thread_pool">线程池信息</option>
+                            <option value="/_cat/plugins">插件信息</option>
+                            <option value="/_cat/fielddata">fielddata</option>
+                            <option value="/_cat/nodeattrs">节点属性</option>
+                            <option value="/_cat/repositories">仓库信息</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-col-md2 layui-col-md-offset1">
+                    <button class="layui-btn" lay-submit lay-filter="doAction">执行</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <table id="rspTable" lay-filter="rsp"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/cat.js"></script>

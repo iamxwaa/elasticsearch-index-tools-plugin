@@ -1,0 +1,50 @@
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md4 layui-card layui-col-space15">
+            <div class="layui-card-header">操作</div>
+            <div class="layui-card-body">
+                <!-- <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                        <legend>配置</legend>
+                        <div style="padding: 15px;">
+                            <button type="button" class="layui-btn" data="/_itools/config">查看配置</button>
+                            <button type="button" class="layui-btn" data="/_itools/config/reload">重新加载配置</button>
+                        </div>
+                    </fieldset> -->
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                    <legend>索引</legend>
+                    <div style="padding: 15px;">
+                        <button type="button" class="layui-btn" data="/_itools/index/precreate">预创建索引</button>
+                        <button type="button" class="layui-btn" data="/_itools/index/hiscreate">创建历史索引</button>
+                        <button type="button" class="layui-btn" data="/_cat/indices?v">查看索引信息</button>
+                    </div>
+                </fieldset>
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                    <legend>模板</legend>
+                    <div style="padding: 15px;">
+                        <button type="button" class="layui-btn" data="/_itools/template">模板文件列表</button>
+                        <button type="button" class="layui-btn" data="/_itools/template/load?force=false">加载模板
+                        </button>
+                        <button type="button" class="layui-btn" data="/_itools/template/load?force=true">强制刷新模板
+                        </button>
+                    </div>
+                </fieldset>
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                    <legend>权限</legend>
+                    <div style="padding: 15px;">
+                        <button type="button" class="layui-btn" data="/_itools/right/load">更新当前节点权限配置</button>
+                    </div>
+                    <div style="padding: 15px;">
+                        <button type="button" class="layui-btn" data="/_itools/right/loadcluster">更新全部节点权限配置</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="layui-col-md8 layui-card layui-col-space15" style="float: right;">
+            <div class="layui-card-header">结果</div>
+            <div class="layui-card-body" id="rspbody">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/tools.js"></script>

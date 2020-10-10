@@ -1,0 +1,69 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div id="view"></div>
+    </div>
+</div>
+<script id="info" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">版本信息</div>
+        <div class="layui-card-body layui-text">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td>集群名称</td>
+                        <td>{{ d.cluster_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>状态</td>
+                        <td>{{ d.status}}</td>
+                    </tr>
+                    <tr>
+                        <td>超时</td>
+                        <td>{{ d.timed_out ? '是' : '否' }}</td>
+                    </tr>
+                    <tr>
+                        <td>节点个数</td>
+                        <td>{{ d.number_of_nodes }}</td>
+                    </tr>
+                    <tr>
+                        <td>数据节点个数</td>
+                        <td>{{ d.number_of_data_nodes }}</td>
+                    </tr>
+                    <tr>
+                        <td>活跃主分片个数</td>
+                        <td>{{ d.active_primary_shards }}</td>
+                    </tr>
+                    <tr>
+                        <td>活跃分片个数</td>
+                        <td>{{ d.active_shards }}</td>
+                    </tr>
+                    <tr>
+                        <td>迁移分片个数</td>
+                        <td>{{ d.relocating_shards }}</td>
+                    </tr>
+                    <tr>
+                        <td>初始分片个数</td>
+                        <td>{{ d.initializing_shards }}</td>
+                    </tr>
+                    <tr>
+                        <td>无效分片个数</td>
+                        <td>{{ d.unassigned_shards }}</td>
+                    </tr>
+                    <tr>
+                        <td>待执行任务个数</td>
+                        <td>{{ d.number_of_pending_tasks }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.use(['vtpl'], function (vtpl) {
+        vtpl.ajax({ url: "_cluster/health", tpl: info, vid: "view" })
+    })
+</script>

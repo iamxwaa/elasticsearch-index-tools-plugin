@@ -1,0 +1,51 @@
+<div class="layui-fluid">
+    <div class="layui-col-md3 layui-card layui-col-space15" style="height: 620px;overflow: auto;width: 40%">
+        <form class="layui-form" style="padding: 10px;">
+            <div class="layui-form-item">
+                <div class="layui-inline"  style="width: 100%;">
+                    <select name="indexData" lay-verify="required" xm-select-search="" xm-select="indexData">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label style="width: 120px">删除备份索引</label>
+                <div class="layui-inline" style="margin-left: 30px">
+                    <input type="radio" name="method" value="yes" title="是" checked="">
+                    <input type="radio" name="method" value="no" title="否">
+                </div>
+            </div>
+            <div class="layui-form-item" align="center">
+                <button class="layui-btn" lay-submit lay-filter="commitTemplate">提交</button>
+            </div>
+        </form>
+    </div>
+    <div class="layui-col-md9 layui-card layui-col-space15" style="float: right;;width: 60%">
+        <div class="layui-card-header">结果</div>
+        <div class="layui-card-body" id="indexTable">
+            ...
+        </div>
+    </div>
+</div>
+<script id="dataTable" type="text/html">
+    <table class="layui-table" lay-size="sm">
+        <thead>
+        <tr>
+            <th width="50%">索引名称</th>
+            <th width="50%">进度</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{# layui.each(d,function(index,item){ }}
+        <tr>
+            <td name="spread" data="{{ index }}" style="cursor: pointer;">
+                <span id="{{ item }}">{{ item }}</span>
+            </td>
+            <td>
+                <span id="{{ item.replace(/./g,'_') }}pro">等待中</span>
+            </td>
+        </tr>
+        {{# }); }}
+        </tbody>
+    </table>
+</script>
+<script src="/_itools/resources/js/other/sortdata.js"></script>

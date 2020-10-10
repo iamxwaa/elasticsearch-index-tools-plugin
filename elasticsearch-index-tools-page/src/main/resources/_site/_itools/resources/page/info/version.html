@@ -1,0 +1,53 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div id="view"></div>
+    </div>
+</div>
+<script id="info" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">版本信息</div>
+        <div class="layui-card-body layui-text">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td>集群名称</td>
+                        <td>{{ d.cluster_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>集群UUID</td>
+                        <td>{{ d.cluster_uuid}}</td>
+                    </tr>
+                    <tr>
+                        <td>集群版本</td>
+                        <td>{{ d.version.number }}</td>
+                    </tr>
+                    <tr>
+                        <td>最早兼容版本</td>
+                        <td>{{ d.version.minimum_wire_compatibility_version }}</td>
+                    </tr>
+                    <tr>
+                        <td>是否快照版本</td>
+                        <td>{{ d.version.build_snapshot ? '是':'否' }}</td>
+                    </tr>
+                    <tr>
+                        <td>lucene版本</td>
+                        <td>{{ d.version.lucene_version }}</td>
+                    </tr>
+                    <tr>
+                        <td>标签</td>
+                        <td>{{ d.tagline }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.use(['vtpl'], function (vtpl) {
+        vtpl.ajax({ url: "", tpl: info, vid: "view" })
+    })
+</script>

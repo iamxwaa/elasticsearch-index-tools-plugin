@@ -1,0 +1,133 @@
+.rsp-text {
+    color: #333;
+    margin: 0;
+}
+
+.rsp-string {
+    color: #5FB878;
+}
+
+.assigned-block {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin: 5px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #5FB878;
+    cursor: pointer;
+}
+
+.unassigned-block {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin: 5px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #c2c2c2;
+}
+
+.primary-shard {
+    border: 2px solid #333;
+}
+
+.site-demo-button .layui-btn {
+    margin: 0 7px 10px 0;
+}
+
+
+.index-info,.index-action{
+    background-color: #23262E;
+    color: #777 !important;
+    width: 210px;
+    margin-top: 5px;
+    border: 1px solid #f2f2f2;
+}
+
+.index-info li,.index-action li{
+    padding: 5px;
+}
+
+.index-info li:hover,.index-action li:hover{
+    color: #fff;
+    background-color: #393d49;
+    cursor: pointer;
+}
+
+.index-info {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    margin-top: 25px;
+}
+
+.index-action {
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+
+.node-table-info {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.node-table-info1 {
+    font-size: 30px;
+    float: left;
+    line-height: 30px;
+}
+
+.node-table-info2 {
+    float: left;
+    margin-left: 20px;
+}
+
+/* 整体样式开始 */
+.layui-layout-admin .layui-header {
+    background-color: #fff;
+    border-bottom: none;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+}
+.layui-layout-admin .layui-logo {
+    background-color: #20222A !important;
+    color: rgba(255,255,255,.8);
+}
+.layui-layout-admin .layui-side {
+    top: 50px;
+}
+.layui-nav {
+    background-color: #20222A;
+}
+.layui-bg-black {
+    background-color: #20222A !important;
+}
+.layui-body {
+    background-color: #f2f2f2;
+}
+.layadmin-header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+}
+.layui-nav-item {
+    line-height: 50px !important;
+}
+.layui-layout-admin .layui-body {
+    top: 50px;
+}
+.layui-fluid {
+    margin-top: 15px;
+}
+/* 整体样式结束 */

@@ -1,0 +1,172 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">模板查看</li>
+                    <li>模板创建</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 550px;overflow: auto;">
+                    <!-- 第一个tab -->
+                    <div class="layui-tab-item layui-show">
+                        <div class="layui-col-md3">
+                            <div class="layui-card">
+                                <div class="layui-card-header">模板</div>
+                                <div class="layui-card-body" id="template-tree">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md9">
+                            <div class="layui-card">
+                                <div class="layui-card-header">结果&nbsp;:&nbsp;&nbsp;<span
+                                        id="currentTemplate">...</span>
+                                    <button type="button" id="deleteTemplate" class="layui-btn"
+                                        style="margin-top: 2px;position: absolute;right: 20px;">删除</button>
+                                    <button type="button" id="saveTemplate" class="layui-btn"
+                                        style="margin-top: 2px;position: absolute;right: 110px;">保存</button>
+                                    <button type="button" id="editTemplate" class="layui-btn"
+                                        style="margin-top: 2px;position: absolute;right: 200px;">编辑</button>
+                                </div>
+                                <div class="layui-card-body">
+                                    <div class="layui-card-body" id="rspbody" style="display: none;">
+                                    </div>
+                                    <div class="layui-card-body" id="rspbodyEdit" style="display: none;">
+                                        <textarea
+                                            style="margin: 0px;width: 100%;height: 620px;border: 1px solid #f6f6f6;resize: none;background-color: #e6e6e6;color: #333;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第二个tab -->
+                    <div class="layui-tab-item">
+                        <form class="layui-form layui-col-md10 layui-col-md-offset1">
+                            <fieldset class="layui-elem-field">
+                                <legend>索引配置</legend>
+                                <div class="layui-field-box">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">模板名称</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="templateName" placeholder="hello-world.json"
+                                                    lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">匹配索引</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="template" placeholder="hello-world*"
+                                                    lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">索引类型</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="type" value="logs" lay-verify="required"
+                                                    autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">优先级</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="order" value="0" lay-verify="required"
+                                                    autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">分片个数</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="number_of_shards" value="5"
+                                                    lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">副本个数</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="number_of_replicas" value="1"
+                                                    lay-verify="required" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">是否启用_source</label>
+                                        <div class="layui-input-block">
+                                            <input type="radio" name="enableSource" value="1" title="是" checked="">
+                                            <input type="radio" name="enableSource" value="0" title="否">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="layui-elem-field">
+                                <legend>字段配置</legend>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">字段名称</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="fieldName" lay-verify="required" autocomplete="off"
+                                                class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">字段类型</label>
+                                        <div class="layui-input-block">
+                                            <select name="fieldType" lay-verify="required">
+                                                <option value="text">text</option>
+                                                <option value="keyword">keyword</option>
+                                                <option value="long">long</option>
+                                                <option value="integer">integer</option>
+                                                <option value="short">short</option>
+                                                <option value="byte">byte</option>
+                                                <option value="double">double</option>
+                                                <option value="float">float</option>
+                                                <option value="half_float">half_float</option>
+                                                <option value="scaled_float">scaled_float</option>
+                                                <option value="date">date</option>
+                                                <option value="boolean">boolean</option>
+                                                <option value="binary">binary</option>
+                                                <option value="integer_range">integer_range</option>
+                                                <option value="float_range">float_range</option>
+                                                <option value="long_range">long_range</option>
+                                                <option value="double_range">double_range</option>
+                                                <option value="date_range">date_range</option>
+                                                <option value="object">object</option>
+                                                <option value="nested">nested</option>
+                                                <option value="geo_point">geo_point</option>
+                                                <option value="geo_shape">geo_shape</option>
+                                                <option value="ip">ip</option>
+                                                <option value="completion">completion</option>
+                                                <option value="token_count">token_count</option>
+                                                <option value="murmur3">murmur3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">其他配置</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="fieldOther"
+                                                placeholder="{'format': 'epoch_millis'}" autocomplete="off"
+                                                class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <input type="button" class="layui-btn layui-btn-sm" value="+" />
+                                        <input type="button" class="layui-btn layui-btn-sm" value="-" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="commitTemplate">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/templates.js"></script>

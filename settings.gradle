@@ -1,0 +1,8 @@
+rootProject.name = 'elasticsearch-index-tools-plugin'
+
+include 'elasticsearch-index-tools-plugin-2x'
+include 'elasticsearch-index-tools-plugin-5x'
+include 'elasticsearch-index-tools-plugin-6x'
+include 'elasticsearch-index-tools-plugin-7x'
+include 'elasticsearch-index-tools-page'
+include 'elasticsearch-index-tools-core'

@@ -1,0 +1,74 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <form class="layui-form">
+                <fieldset class="layui-elem-field">
+                    <legend>仓库配置</legend>
+                    <div class="layui-field-box">
+                        <div class="layui-form-item">
+                            <div class="layui-inline layui-col-md3">
+                                <label class="layui-form-label">仓库名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="repository" lay-verify="required" autocomplete="off"
+                                        class="layui-input" placeholder="请输入仓库名称">
+                                </div>
+                            </div>
+                            <div class="layui-inline layui-col-md3">
+                                <label class="layui-form-label">存储类型</label>
+                                <div class="layui-input-block">
+                                    <select name="type" lay-filter="changeType">
+                                        <option value="fs" selected="">本地磁盘</option>
+                                        <option value="hdfs">hdfs</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline layui-col-md3">
+                                <label class="layui-form-label">启用压缩</label>
+                                <div class="layui-input-block">
+                                    <input type="checkbox" checked="" name="compress" lay-skin="switch"
+                                        lay-text="ON|OFF">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="create">创建/修改</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="settingsForm"></div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <table id="repositoryTable" lay-filter="repository"></table>
+            <script type="text/html" id="repositoryTableBar">
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+        </div>
+    </div>
+</div>
+<script id="settings" type="text/html">
+{{# layui.each(d,function(index,item){ }}
+{{# if(index % 3 == 0) { }}
+<div class="layui-form-item">
+    {{# } }}
+    <div class="layui-inline layui-col-md3">
+        <label class="layui-form-label">{{ item.label }}</label>
+        <div class="layui-input-block">
+            {{# if(item.checkbox) { }}
+            <input type="checkbox" name="{{ item.name }}" lay-skin="switch" lay-text="ON|OFF">
+            {{# } else { }}
+            <input type="text" autocomplete="off" class="layui-input" name="{{ item.name }}"
+                lay-verify="{{ item.allowEmpty ? '' : 'required' }}" placeholder="{{ item.ph ? item.ph : '' }}">
+            {{# } }}
+        </div>
+    </div>
+    {{# if((index+1) % 3 == 0) { }}
+</div>
+{{# } }}
+{{# }); }}
+</script>
+<script src="/_itools/resources/js/snapshot/repository.js"></script>

@@ -1,0 +1,116 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">别名查看</li>
+                    <li>别名创建</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 550px;overflow: auto;">
+                    <div class="layui-tab-item layui-show">
+                        <div class="layui-col-md3">
+                            <div class="layui-card">
+                                <div class="layui-card-header">索引<i class="layui-icon layui-icon-refresh"
+                                        id="index-tree-refresh"
+                                        style="font-size: 14px;cursor: pointer;margin-left: 10px;"></i></div>
+                                <div class="layui-card-body" id="index-tree">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md9">
+                            <div class="layui-card">
+                                <div class="layui-card-header">结果</div>
+                                <div class="layui-card-body">
+                                    <div class="layui-card-body" id="rspbody1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="layui-col-md5">
+                            <div class="layui-card">
+                                <div class="layui-card-header">创建索引别名</div>
+                                <div class="layui-card-body">
+                                    <form class="layui-form">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">索引名称</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="indexName" lay-verify="required"
+                                                    placeholder="请输入索引名称" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">索引格式</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="indexNameFormat" value="<NAME>-<TIME>"
+                                                    lay-verify="required" placeholder="<NAME>代表索引名称,<TIME>代表时间"
+                                                    class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">索引名称是否存在</label>
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="indexExist" value="1" title="是">
+                                                <input type="radio" name="indexExist" value="0" title="否" checked="">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">索引日期格式</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="indexFormat" lay-verify="required"
+                                                    value="yyyy.MM" placeholder="请输入索引日期格式: yyyy.MM"
+                                                    class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">别名日期格式</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="aliasFormat" lay-verify="required"
+                                                    value="yyyy.MM.dd" placeholder="请输入索别名日期格式: yyyy.MM.dd"
+                                                    class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">时间字段</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="timeField" lay-verify="required" value="time"
+                                                    placeholder="请输入用来过滤查询的时间字段" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">起止日期</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="startEndDate" lay-verify="required"
+                                                    placeholder="请输入起止日期: 2019.01或2019.01-2019.10" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block" style="float: right;">
+                                                <button type="button" class="layui-btn" lay-submit=""
+                                                    lay-filter="submitAlias">创建</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md7">
+                            <div class="layui-card">
+                                <div class="layui-card-header">结果</div>
+                                <div class="layui-card-body">
+                                    <div class="layui-card-body" id="rspbody2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/aliastools1.js"></script>
+<script src="/_itools/resources/js/other/aliastools2.js"></script>

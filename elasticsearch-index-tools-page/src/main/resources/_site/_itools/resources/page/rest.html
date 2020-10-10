@@ -1,0 +1,51 @@
+<div class="layui-fluid">
+    <div class="layui-col-md4 layui-card layui-col-space15">
+        <div class="layui-card-header">请求</div>
+        <div class="layui-card-body">
+            <form class="layui-form layui-form-pane" lay-filter="restForm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求方式</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="method" value="GET" title="GET" checked="">
+                        <input type="radio" name="method" value="PUT" title="PUT">
+                        <input type="radio" name="method" value="POST" title="POST">
+                        <input type="radio" name="method" value="DELETE" title="DELETE">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求链接</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="url" value="_all/_search" autocomplete="off" placeholder="请输入请求相对路径"
+                            class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">历史记录</label>
+                    <div class="layui-input-block">
+                        <select id="history" name="history" lay-filter="history">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">请求体</label>
+                    <div class="layui-input-block">
+                        <textarea rows="12" name="rqbody" style="resize: none" placeholder="请输入查询内容"
+                            class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn" lay-submit="" lay-filter="search">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="layui-col-md8 layui-card layui-col-space15" style="float: right;">
+        <div class="layui-card">
+            <div class="layui-card-header">结果</div>
+            <div class="layui-card-body" id="rspbody">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/rest.js"></script>

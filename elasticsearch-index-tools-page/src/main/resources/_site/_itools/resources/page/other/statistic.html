@@ -1,0 +1,159 @@
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md4 layui-card layui-col-space15" style="width:60%">
+            <div class="layui-card-header">操作</div>
+            <div class="layui-card-body">
+			<form class="layui-form">
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+                    <legend>索引</legend>
+                    <div style="padding: 5px;">
+						<div class="layui-inline"  style="width: 100%;">
+							<select name="indexData" lay-verify="required" xm-select-search="" xm-select="indexData">
+							</select>
+						</div>
+                    </div>
+                </fieldset>
+				<fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+					<legend>时间过滤</legend>
+					<div class="layui-field-box">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label" style="width: 60px;">event_time</label>
+								<div class="layui-input-inline">
+									<input type="text" class="layui-input" name="start_time" id="start_time" placeholder="yyyy-MM-dd HH:mm:ss">
+								</div>
+								<div class="layui-input-inline" style="width: 10px;padding-top: 5px">
+									-
+								</div>
+								<div class="layui-input-inline">
+									<input type="text" class="layui-input"  name="end_time" id="end_time" placeholder="yyyy-MM-dd HH:mm:ss">
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+                    <legend>过滤条件</legend>
+                    <div class="layui-field-box">
+						<div class="layui-form-item">
+							<div class="layui-inline" style="width:110px;">
+								<select name="mustType">
+									<option value="must">must</option>
+									<option value="must_not">must_not</option>
+									<option value="should">should</option>
+								</select>
+							</div>
+							<div class="layui-inline" style="width:120px;">
+								<select name="mustField" id="mustField">
+								</select>
+							</div>
+							<div class="layui-inline"  style="width:80px;">
+								<select name="termType" lay-filter="termTypeFilter">
+									<option value="term">term</option>
+									<option value="range">range</option>
+								</select>
+							</div>
+							<div class="layui-inline" style="width:120px;" id="fieldDataDIv">
+								<input type="text" name="mustFieldData" id="mustFieldData" autocomplete="off" class="layui-input">
+							</div>
+							<div class="layui-inline"  style="width:80px;display:none" id="gtDiv">
+								<select name="gtType" >
+									<option value="gt">gt</option>
+									<option value="gte">gte</option>
+								</select>
+							</div>
+							<div class="layui-inline" style="width:120px;display:none" id="gtDataDiv">
+								<input type="text" name="gtData" autocomplete="off" class="layui-input">
+							</div>
+							<div class="layui-inline"  style="width:80px;display:none" id="ltDiv">
+								<select name="ltType" >
+									<option value="lt">lt</option>
+									<option value="lte">lte</option>
+								</select>
+							</div>
+							<div class="layui-inline" style="width:120px;display:none" id="ltDataDiv">
+								<input type="text" name="ltData" autocomplete="off" class="layui-input">
+							</div>
+							<div class="layui-inline">
+								<input type="button" id="sumBtn1" class="layui-btn layui-btn-sm" value="+" />
+								<input type="button" id="sumBtn2" class="layui-btn layui-btn-sm" value="-" />
+							</div>
+						</div>
+						
+					</div>
+                </fieldset>
+                <fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+                    <legend>聚合统计</legend>
+					<div class="layui-form-item">
+						<label class="layui-form-label">统计类型</label>
+						<div class="layui-inline" style="width:120px;">
+							<select name="statisticType" id="statisticType">
+								<option value="terms">分组统计</option>
+								<option value="dateHis">按天统计</option>
+								<option value="cardinality">去重</option>
+								<option value="sum">加和</option>
+								<option value="count">统计</option>
+							</select>
+						</div>
+						<div class="layui-inline">
+							<select name="fieldData" id="fieldData" lay-verify="required">
+							</select>
+						</div>
+						<div class="layui-inline">
+							<input type="button" id="sumBtn3"  class="layui-btn layui-btn-sm" value="+" />
+							<input type="button" id="sumBtn4" class="layui-btn layui-btn-sm" value="-" />
+						</div>
+<!--						<div class="layui-form-item">-->
+<!--							<label class="layui-form-label">子统计</label>-->
+<!--							<div class="layui-inline" style="width:120px;">-->
+<!--								<select name="subStatisticType">-->
+<!--									<option value="">无</option>-->
+<!--									&lt;!&ndash;<option value="terms">分组统计</option>&ndash;&gt;-->
+<!--									<option value="cardinality">去重</option>-->
+<!--									<option value="sum">加和</option>-->
+<!--									<option value="count">统计</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--							<div class="layui-inline">-->
+<!--								<select name="subFieldData" id="subFieldData">-->
+<!--									<option value=""></option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--						</div>-->
+
+					</div>
+                </fieldset>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" lay-submit lay-filter="commitTemplate">提交</button>
+					</div>
+				</div>
+				</form>
+            </div>
+        </div>
+        <div class="layui-col-md8 layui-card layui-col-space15" style="float: right;width:40%">
+			<div class="layui-tab">
+				<ul class="layui-tab-title">
+					<li class="layui-this">查询语句</li>
+					<li>查询结果</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show" id="queryData">
+						...
+					</div>
+					<div class="layui-tab-item" id="queryResult">
+						...
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/statistic.js"></script>
+<style type="text/css">
+	.layui-form-pane .layui-form-label{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

@@ -1,0 +1,19 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <table id="autoCreateTable" lay-filter="autoCreate"></table>
+            <script type="text/html" id="autoCreateToolBar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" lay-event="add">新增任务</button>
+            </div>
+            </script>
+            <script type="text/html" id="autoCreateTableBar">
+                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <div id="autoCreateTablePage" style="float: right;"></div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/other/autocreate.js"></script>

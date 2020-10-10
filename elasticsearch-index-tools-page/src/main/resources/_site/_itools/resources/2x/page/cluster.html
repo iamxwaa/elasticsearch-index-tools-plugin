@@ -1,0 +1,81 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header ">节点个数</div>
+            <div class="layui-card-body" id="nodeCount">
+                2
+            </div>
+        </div>
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header">索引个数</div>
+            <div class="layui-card-body" id="indexCount">
+                2
+            </div>
+        </div>
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header">分片总数</div>
+            <div class="layui-card-body" id="shardCount">
+                2
+            </div>
+        </div>
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header">数据条数</div>
+            <div class="layui-card-body" id="docCount">
+                2
+            </div>
+        </div>
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header">占用磁盘</div>
+            <div class="layui-card-body" id="diskSize">
+                2
+            </div>
+        </div>
+        <div class="layui-card layui-col-md2" style="text-align: center;">
+            <div class="layui-card-header">集群状态</div>
+            <div class="layui-card-body" id="runStatus">
+                2
+            </div>
+        </div>
+    </div>
+    <div class="layui-row" id="indexCards">
+        <div class="layui-row layui-card layui-col-space15">
+            <div class="layui-input-block layui-col-md2">
+                <input type="text" id="search" placeholder="请输入索引名称" class="layui-input">
+            </div>
+            <div id="dataPage" class="layui-col-md6 layui-col-md-offset2"></div>
+        </div>
+        <div class="layui-form layui-card layui-col-space15">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="280">
+                    <col width="280">
+                    <col width="280">
+                    <col width="280">
+                    <!-- <col width="260"> -->
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th><strong>节点/索引</strong></th>
+                        <th id="index0">索引0</th>
+                        <th id="index1">索引1</th>
+                        <th id="index2">索引2</th>
+                        <th id="index3">索引3</th>
+                        <!-- <th id="index4">索引4</th> -->
+                    </tr>
+                </thead>
+                <tbody id="dataBody">
+                    <tr>
+                        <td id="shardsInfo"></td>
+                        <td id="shardsUA0"></td>
+                        <td id="shardsUA1"></td>
+                        <td id="shardsUA2"></td>
+                        <td id="shardsUA3"></td>
+                        <!-- <td id="shardsUA4"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/2x/js/cluster.js"></script>

@@ -1,0 +1,75 @@
+ext.classname = 'com.github.toxrink.indextools.IndexToolsSecurityPlugin'
+//ext.classname = 'com.github.toxrink.indextools.IndexToolsPlugin'
+version = "${esVersion}_${version}"
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(ScalaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation "org.elasticsearch:elasticsearch:$esVersion"
+    compile group: 'org.elasticsearch.plugin', name: 'transport-netty4-client', version: "$esVersion"
+}
+
+def jars = [
+        'plugin-security.policy',
+        'elasticsearch-index-tools-page**.jar',
+        'elasticsearch-index-tools-core**.jar',
+        "$project.name-$version*",
+        'jxwrapper**.jar',
+        'netty**.jar',
+        'transport-netty4**.jar',
+        'scala**.jar',
+        'common**.jar',
+        'quartz**.jar',
+        "slf4j-api*.jar",
+        "slf4j-log4j*.jar",
+        "gson*.jar",
+]
+
+task makePluginDescriptor() {
+    def prop = new Properties()
+    def input = project.rootProject.file("plugin-descriptor.properties.template").newDataInputStream()
+    def output = project.rootProject.file("plugin-descriptor-${version}.properties").newDataOutputStream()
+    prop.load(input)
+    input.close()
+    prop.setProperty('version', "$version")
+    prop.setProperty('classname', "$classname")
+    prop.setProperty('elasticsearch.version', "$esVersion")
+    prop.store(output, "Elasticsearch plugin descriptor file\n#This file must exist as 'plugin-descriptor.properties' inside a plugin.")
+    output.close()
+}
+
+task release(dependsOn: [makePluginDescriptor]) {
+    doLast({
+        def zipDir = "$buildDir/zip/elasticsearch"
+        if (Float.parseFloat("$esVersion".substring(0, 3)) >= 6.3f) {
+            zipDir = "$buildDir/zip"
+        }
+        file(zipDir).mkdirs()
+        file("$buildDir/zip").eachFile {
+            f -> delete f
+        }
+        copy {
+            from project.rootProject.file("plugin-descriptor-${version}.properties")
+            rename "plugin-descriptor-${version}.properties", 'plugin-descriptor.properties'
+            into zipDir
+        }
+        copy {
+            from "$buildDir/libs"
+            from configurations.runtime
+            from "src/main/resources"
+            include jars
+            into zipDir
+        }
+    })
+}
+
+task zip(type: Zip) {
+    from "$buildDir/zip"
+    destinationDir file("$buildDir")
+}

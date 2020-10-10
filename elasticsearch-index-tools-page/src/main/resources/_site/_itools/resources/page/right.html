@@ -1,0 +1,19 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <table id="userTable" lay-filter="user"></table>
+            <script type="text/html" id="userToolBar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" lay-event="add">新增用户</button>
+            </div>
+            </script>
+                <script type="text/html" id="userTableBar">
+                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <div id="userTablePage" style="float: right;"></div>
+        </div>
+    </div>
+</div>
+<script src="/_itools/resources/js/right.js"></script>
