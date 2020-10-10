@@ -1,0 +1,14 @@
+/release/
+/target/
+.classpath
+.project
+.settings
+*.iml
+.gradle/
+bin/
+build/
+.vscode/
+.idea/
+out/
+plugin-descriptor-*.properties
+.svn
